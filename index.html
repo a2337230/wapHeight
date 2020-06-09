@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    document.body.style.width = getBrowserInterfaceSize().pageWidth + 'px'
+    document.body.style.height = getBrowserInterfaceSize().pageHeight + 'px'
+    document.title = getBrowserInterfaceSize().pageWidth + ',' + getBrowserInterfaceSize().pageHeight 
+    // console.log(getBrowserInterfaceSize().pageWidth)
+    function getBrowserInterfaceSize() {
+        var pageWidth = window.innerWidth;
+        var pageHeight = window.innerHeight;
+
+        if (typeof pageWidth != "number") {
+            //在标准模式下面
+            if (document.compatMode == "CSS1Compat" ) {
+                pageWidth = document.documentElement.clientWidth;
+                pageHeight = document.documentElement.clientHeight;
+            } else {
+                pageWidth = document.body.clientWidth;
+                pageHeight = window.body.clientHeight;
+            }
+        }
+        return {
+            pageWidth: pageWidth,
+            pageHeight: pageHeight
+        }
+    }
+  </script>
+</body>
+</html>
